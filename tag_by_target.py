@@ -90,7 +90,7 @@ if __name__ == "__main__":
     args = parse_command_line_args()
     org_id = args.org_id or "1b48e2c4-6ca8-455f-a73f-d2f6f2a6b225"
     int_name = args.integration or "all"
-    attribute = args.attribute or f"name"
+    attribute = args.attribute or "displayName"
     field_sep = args.field_sep or None
     field_num = args.field_num or None
     tag_name = args.tag_name or None
@@ -194,7 +194,7 @@ if __name__ == "__main__":
     for target in compacted:
         p_params = {"origin": int_name, "targetId": target["snyk_id"], "limit": 100}
 
-        t_projects = v3.get_all_pages(f"/orgs/{org_id}/projects", p_params)
+        t_projects = v3.get_v3_pages(f"orgs/{org_id}/projects", p_params)
 
         for p in t_projects:
 
